@@ -3,6 +3,7 @@ using Exam_proctor.Sessions;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -19,12 +20,16 @@ namespace Exam_proctor.APIClient
 
         public async Task LoginAsync(String email, String password, Form parentForm)
         {
+
+            string baseUrl = ConfigurationManager.AppSettings["Base_url"];
+            var baseUrlEndPoint = $"{baseUrl.TrimEnd('/')}/student/login";
             
+
             var loadingForm = new LoadingForm();
             loadingForm.Show(parentForm);
             loadingForm.BringToFront();
                 
-            Console.WriteLine("Function hitttttttttttttttttt");
+            
             using (var client = new HttpClient())
             {
                 var payload = new
@@ -39,7 +44,7 @@ namespace Exam_proctor.APIClient
 
                 try
                 {
-                    var response = await client.PostAsync("http://localhost:3000/api/student/login", content);
+                    var response = await client.PostAsync(baseUrlEndPoint, content);
 
                     var responseString = await response.Content.ReadAsStringAsync();
 
@@ -74,7 +79,7 @@ namespace Exam_proctor.APIClient
                             
                             if (parentForm is Form1 form1)
                             {
-                                form1.TriggerLoadManually(); // We'll add this method next
+                                form1.TriggerLoadManually(); 
                             }
 
                             if (result == DialogResult.OK)
@@ -82,7 +87,7 @@ namespace Exam_proctor.APIClient
                                 // Close the login form and open the exam form
                                 if (parentForm is Form1 form2)
                                 {
-                                    form2.Hide(); // Optional: hide login form
+                                    form2.Hide(); 
                                     var examForm = new ExamForm();
                                     examForm.Show(); // Show exam interface
                                 }
@@ -115,6 +120,8 @@ namespace Exam_proctor.APIClient
         //Logout 
         public static async Task<bool> logoutAsync()
         {
+            string baseUrl = ConfigurationManager.AppSettings["Base_url"];
+            var baseUrlEndPointLogOut = $"{baseUrl.TrimEnd('/')}/examSession/endExamSession";
 
             using (var client = new HttpClient())
             {
@@ -133,7 +140,7 @@ namespace Exam_proctor.APIClient
 
                 try
                 {
-                    var response = await client.PostAsync("http://localhost:3000/api/examSession/endExamSession", content);
+                    var response = await client.PostAsync(baseUrlEndPointLogOut, content);
 
                     var responseString = await response.Content.ReadAsStringAsync();
 

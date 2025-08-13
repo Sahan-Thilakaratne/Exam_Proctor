@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -14,6 +15,10 @@ namespace Exam_proctor.APIClient
 
         public async Task SendToBackend(string pastedText)
         {
+
+            string baseUrl = ConfigurationManager.AppSettings["Base_url"];
+            var baseUrlEndPoint = $"{baseUrl.TrimEnd('/')}/examSession/addCopiedText";
+
             try
             {
                 var payload = new
@@ -28,7 +33,8 @@ namespace Exam_proctor.APIClient
 
                 using (var client = new HttpClient())
                 {
-                    var response = await client.PostAsync("http://localhost:3000/api/examSession/addCopiedText", content);
+                    //var response = await client.PostAsync("http://localhost:3000/api/examSession/addCopiedText", content);
+                    var response = await client.PostAsync(baseUrlEndPoint, content);
                     var result = await response.Content.ReadAsStringAsync();
 
                     Console.WriteLine("Copied text sent to backend: " + result);

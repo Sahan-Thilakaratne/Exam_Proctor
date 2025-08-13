@@ -25,6 +25,8 @@ namespace Exam_proctor.APIClient
         {
 
             string apiUrl = ConfigurationManager.AppSettings["Api_urll"];
+            string baseUrl = ConfigurationManager.AppSettings["Base_url"];
+            var baseUrlEndPoint = $"{baseUrl.TrimEnd('/')}/examSession/addCopiedText";
             var endpoint = $"{apiUrl.TrimEnd('/')}/detect-ai";
 
             try
@@ -60,7 +62,8 @@ namespace Exam_proctor.APIClient
                     var backendPayloadString = JsonConvert.SerializeObject(backendPayload);
                     var backendContent = new StringContent(backendPayloadString, Encoding.UTF8, "application/json");
 
-                    var backendResponse = await client.PostAsync("http://localhost:3000/api/examSession/addCopiedText", backendContent);
+                    //var backendResponse = await client.PostAsync("http://localhost:3000/api/examSession/addCopiedText", backendContent);
+                    var backendResponse = await client.PostAsync(baseUrlEndPoint, backendContent);
                     var backendResult = await backendResponse.Content.ReadAsStringAsync();
 
                     Console.WriteLine("Copied text + detectAI saved: " + backendResult);

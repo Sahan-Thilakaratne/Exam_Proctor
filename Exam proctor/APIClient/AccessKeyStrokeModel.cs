@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
@@ -23,6 +24,10 @@ namespace Exam_proctor.APIClient
 
         public async Task SendKeylogToModel(double[] features)
         {
+
+            string baseUrl = ConfigurationManager.AppSettings["Base_url"];
+            var baseUrlEndPoint = $"{baseUrl.TrimEnd('/')}/examSession/updateSession";
+
             try
             {
                 using (var client = new HttpClient())
@@ -55,7 +60,7 @@ namespace Exam_proctor.APIClient
                     var backendPayloadString = JsonConvert.SerializeObject(backendPayload);
                     var backendContent = new StringContent(backendPayloadString, Encoding.UTF8, "application/json");
 
-                    var backendResponse = await client.PostAsync("http://localhost:3000/api/examSession/updateSession", backendContent);
+                    var backendResponse = await client.PostAsync(baseUrlEndPoint, backendContent);
                     var backendResult = await backendResponse.Content.ReadAsStringAsync();
 
                     Console.WriteLine("Sent to backend: " + backendResult);

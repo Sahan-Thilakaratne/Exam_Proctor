@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
@@ -22,6 +23,9 @@ namespace Exam_proctor.APIClient
 
         public async Task SendAudioToModel(string audioPath)
         {
+            string baseUrl = ConfigurationManager.AppSettings["Base_url"];
+            var baseUrlEndPoint = $"{baseUrl.TrimEnd('/')}/examSession/updateSession";
+
             try
             {
                 using (var client = new HttpClient())
@@ -42,9 +46,9 @@ namespace Exam_proctor.APIClient
 
                     if (parsedResult.human_voice_detected)
                     {
-                        // Optional warning
-                        Console.WriteLine("🗣️ Human voice detected during exam!");
-                        // MessageBox.Show("🗣️ Human voice detected during exam!", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        
+                        Console.WriteLine("Human voice detected during exam!");
+                        // MessageBox.Show("Human voice detected during exam!", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
 
                     
@@ -58,7 +62,7 @@ namespace Exam_proctor.APIClient
                     };
 
                     var backendContent = new StringContent(JsonConvert.SerializeObject(backendPayload), Encoding.UTF8, "application/json");
-                    var backendResponse = await client.PostAsync("http://localhost:3000/api/examSession/updateSession", backendContent);
+                    var backendResponse = await client.PostAsync(baseUrlEndPoint, backendContent);
                     var backendResult = await backendResponse.Content.ReadAsStringAsync();
 
                     Console.WriteLine("Sent to backend: " + backendResult);
