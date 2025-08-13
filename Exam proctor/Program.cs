@@ -1,4 +1,5 @@
-﻿using System;
+﻿using dotenv.net;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,6 +15,7 @@ namespace Exam_proctor
         [STAThread]
         static void Main()
         {
+            DotEnv.Load();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());

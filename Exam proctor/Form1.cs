@@ -1,4 +1,7 @@
-﻿using NAudio.Wave;
+﻿using Exam_proctor.APIClient;
+using Exam_proctor.Services;
+using NAudio.Wave;
+using Newtonsoft.Json;
 using OpenCvSharp;
 using System;
 using System.Collections.Generic;
@@ -12,17 +15,32 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Newtonsoft.Json;
 
 namespace Exam_proctor
 {
     public partial class Form1 : Form
     {
 
+        //Form design
+        private Label lblWelcome;
+        private Label lblEmail;
+        private TextBox txtEmail;
+        private Label lblPassword;
+        private TextBox txtPassword;
+        private Button btnLogin;
+        private Label lblStatus;
+
+
+        /// <summary>
+        /// ////////////////
+        /// </summary>
         private NotifyIcon trayIcon;
         private ContextMenu trayMenu;
 
         private GlobalKeyboardHook _keyLogger;
+
+        private HashSet<Keys> _keysPressed = new HashSet<Keys>();
+
 
 
         private WaveInEvent waveIn;
@@ -31,9 +49,41 @@ namespace Exam_proctor
         private System.Windows.Forms.Timer audioSaveTimer;
         private int audioFileIndex = 0;
 
+        private Dictionary<Keys, long> keyDownTimes = new Dictionary<Keys, long>();
+        private List<long> holdTimes = new List<long>();
+        private List<long> interKeyLatencies = new List<long>();
+        private List<long> digraphDurations = new List<long>();
+        private long lastKeyDownTime = -1;
+
+        //Plagia
+        private System.Windows.Forms.Timer plagiarismCheckTimer;
+        private System.Windows.Forms.Timer paraphraseCheckTimer;
+        private StringBuilder recentTypedBuffer = new StringBuilder();
+        private object bufferLock = new object();
+
+
+
+        private static readonly string AppDataRoot =
+        Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "ExamProctor");
+        private static readonly string FramesDir = Path.Combine(AppDataRoot, "frames");
+        private static readonly string AudioDir = Path.Combine(AppDataRoot, "audio");
+
+
+        //Video capture threads helpers
+        private Thread webcamThread;
+        private VideoCapture webcamCapture;
+        private bool webcamRunning = false;
+
+
+        private KeystrokeDynamicsService _keystrokeService;
+        private PasteDetectionService _pasteService;
+
         public Form1()
         {
+
+         
             InitializeComponent();
+
 
             trayMenu = new ContextMenu();
             trayMenu.MenuItems.Add("Exit", OnExit);
@@ -47,10 +97,60 @@ namespace Exam_proctor
 
             this.Resize += new EventHandler(Form1_Resize);
 
-            this.Load += Form1_Load; // Attach Form1_Load
+            //this.Load += Form1_Load; // Attach Form1_Load
 
         }
 
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath();
+            int radius = 30;
+            path.AddArc(0, 0, radius, radius, 180, 90);
+            path.AddArc(Width - radius, 0, radius, radius, 270, 90);
+            path.AddArc(Width - radius, Height - radius, radius, radius, 0, 90);
+            path.AddArc(0, Height - radius, radius, radius, 90, 90);
+            this.Region = new Region(path);
+        }
+
+
+        public void TriggerLoadManually()
+        {
+            
+            MessageBox.Show("Proctoring components are now starting...");
+
+                
+            Form1_Load(this, EventArgs.Empty);
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            Directory.CreateDirectory(AppDataRoot);
+            Directory.CreateDirectory(FramesDir);
+            Directory.CreateDirectory(AudioDir);
+
+            StartWebcamCapture();
+            StartAudioCapture();
+
+            audioSaveTimer = new System.Windows.Forms.Timer();
+            audioSaveTimer.Interval = 10000;
+            audioSaveTimer.Tick += AudioSaveTimer_Tick;
+            audioSaveTimer.Start();
+
+
+           
+            _keystrokeService = new KeystrokeDynamicsService();
+            _pasteService = new PasteDetectionService();
+
+
+            //Plagiarism Timers
+            //System.Windows.Forms.Timer textCheckTimer = new System.Windows.Forms.Timer();
+            //textCheckTimer.Interval = 20000; // 20 seconds
+            //textCheckTimer.Tick += TextCheckTimer_Tick;
+            //textCheckTimer.Start();
+           
+
+            
+        }
 
         private void Form1_Resize(object sender, EventArgs e)
         {
@@ -68,28 +168,59 @@ namespace Exam_proctor
         }
 
 
+
+
+        private async void btnLogin1_Click(object sender, EventArgs e)
+        {
+            Auth auth = new Auth();
+            await auth.LoginAsync(email.Text, password.Text, this);
+        }
+
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
         public void StartWebcamCapture()
         {
-            new Thread(() =>
+            webcamCapture = new VideoCapture(0);
+            webcamRunning = true;
+
+            webcamThread = new Thread(async () =>
             {
-                var capture = new VideoCapture(0);
                 var mat = new Mat();
-                while (true)
+                while (webcamRunning)
                 {
-                    capture.Read(mat);
+                    webcamCapture.Read(mat);
                     if (!mat.Empty())
                     {
-                        string path = $"frames/frame_{DateTime.Now.Ticks}.jpg";
+                        var fileName = $"frame_{DateTime.Now:yyyyMMdd_HHmmss_fff}.jpg";
+                        var path = Path.Combine(FramesDir, fileName);
                         Cv2.ImWrite(path, mat);
-                        // You can also send to your model here
-                        // 🔁 Send this frame to the Flask server
-                        _ = SendFrameToVideoModel(path);
-                        _ = SendFrameToHumanModel(path);
+
+                        //_ = new AccessCheatingObjectsModel().SendFrameToVideoModel(path);
+                        //_ = new AccessHumanModel().SendFrameToHumanModel(path);
+                        //_ = new AccessFacePoseModel().SendFrameToFacePoseModel(path);
+
+                        await new AccessCheatingObjectsModel().SendFrameToVideoModel(path);
+                        await new AccessHumanModel().SendFrameToHumanModel(path);
+                        await new AccessFacePoseModel().SendFrameToFacePoseModel(path);
                     }
-                    Thread.Sleep(1000); // Capture every 1 sec
+
+                    Thread.Sleep(2000); // 2 seconds
                 }
-            }).Start();
+
+                // Cleanup 
+                webcamCapture.Release();
+                webcamCapture.Dispose();
+                mat.Dispose();
+            });
+
+            webcamThread.IsBackground = true;
+            webcamThread.Start();
         }
+
 
 
 
@@ -99,66 +230,39 @@ namespace Exam_proctor
             waveIn.WaveFormat = new WaveFormat(16000, 1);
             waveIn.DataAvailable += (s, a) =>
             {
-                audioBuffer.AddRange(a.Buffer.Take(a.BytesRecorded));
-                // Optional: save every 5 seconds or send to model
+                lock (audioBuffer)
+                {
+                    audioBuffer.AddRange(a.Buffer.Take(a.BytesRecorded));
+                }
             };
+
             waveIn.StartRecording();
         }
 
-
-
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            Directory.CreateDirectory("frames"); // For webcam images
-            Directory.CreateDirectory("audio");  // For audio WAVs
-
-            StartWebcamCapture();
-            StartAudioCapture();
-
-            _keyLogger = new GlobalKeyboardHook();
-            _keyLogger.KeyPressed += async (s, key) =>
-            {
-                Console.WriteLine($"Key Pressed: {key}");
-                File.AppendAllText("keylog.txt", $"{key} ");
-
-                // 🧪 Simulated feature array until real extractor is built
-                double[] testFeatures = new double[]
-                {
-            70, 100, 120, 80,
-            150, 180, 120,
-            250, 270, 200,
-            160, 180, 140
-                };
-
-                await SendKeylogToModel(testFeatures);
-            };
-
-            // Audio saving timer
-            audioSaveTimer = new System.Windows.Forms.Timer();
-            audioSaveTimer.Interval = 10000; // Save audio every 10 seconds
-            audioSaveTimer.Tick += AudioSaveTimer_Tick;
-            audioSaveTimer.Start();
-        }
-
+     
 
 
         private void AudioSaveTimer_Tick(object sender, EventArgs e)
         {
-            if (audioBuffer.Count > 0)
+            byte[] bufferToWrite;
+            lock (audioBuffer)
             {
-                string path = $"audio/audio_{audioFileIndex++}.wav";
+                bufferToWrite = audioBuffer.ToArray();
+                audioBuffer.Clear();
+            }
+
+            if (bufferToWrite.Length > 0)
+            {
+                var fileName = $"audio_{audioFileIndex++}.wav";
+                var path = Path.Combine(AudioDir, fileName);
 
                 using (var writer = new WaveFileWriter(path, new WaveFormat(16000, 1)))
                 {
-                    writer.Write(audioBuffer.ToArray(), 0, audioBuffer.Count);
+                    writer.Write(bufferToWrite, 0, bufferToWrite.Length);
                 }
 
-                audioBuffer.Clear(); // Clear buffer for next batch
-                Console.WriteLine($"Audio saved to: {path}");
-
-
-                SendAudioToModel(path);
+                Console.WriteLine($"Audio processed: {path}");
+                new AccessAudioModel().SendAudioToModel(path);
             }
         }
 
@@ -168,145 +272,117 @@ namespace Exam_proctor
 
 
 
+        //Plagiarism
+        //private async void TextCheckTimer_Tick(object sender, EventArgs e)
+        //{
+        //    string studentText = "";
+
+        //    lock (bufferLock)
+        //    {
+        //        studentText = recentTypedBuffer.ToString().Trim();
+        //        recentTypedBuffer.Clear(); // Clear after sending
+        //    }
+
+        //    if (!string.IsNullOrWhiteSpace(studentText))
+        //    {
+        //        Console.WriteLine("📝 Sending typed content:\n" + studentText);
+
+        //        //await CheckPlagiarism(studentText);
+
+        //        // Optional: Provide a known reference answer
+        //        string referenceText = "The quick brown fox jumps over the lazy dog."; // or load from file/db
+        //        //await CheckParaphrase(studentText, referenceText);
+        //    }
+        //}
+
+
+        //private async Task CheckParaphrase(string text1, string text2)
+        //{
+        //    try
+        //    {
+        //        var client = new HttpClient();
+        //        var data = new
+        //        {
+        //            text1 = text1,
+        //            text2 = text2
+        //        };
+        //        var content = new StringContent(JsonConvert.SerializeObject(data), Encoding.UTF8, "application/json");
+        //        var response = await client.PostAsync("http://127.0.0.1:5000/check-paraphrase", content);
+        //        var result = await response.Content.ReadAsStringAsync();
+
+        //        Console.WriteLine("Paraphrase check: " + result);
+        //        // You can also parse and display in MessageBox
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine("Error: " + ex.Message);
+        //    }
+        //}
+
+
+
+
+        //private async Task CheckPlagiarism(string text)
+        //{
+        //    try
+        //    {
+        //        var client = new HttpClient();
+        //        var data = new { text = text };
+        //        var content = new StringContent(JsonConvert.SerializeObject(data), Encoding.UTF8, "application/json");
+        //        var response = await client.PostAsync("http://127.0.0.1:5000/check-plagiarism", content);
+        //        var result = await response.Content.ReadAsStringAsync();
+
+        //        Console.WriteLine("Plagiarism check: " + result);
+        //        // Show alert if result contains "AI"
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine("Error: " + ex.Message);
+        //    }
+        //}
 
 
 
 
 
 
-
-
-
-
-
-
-
-        private async Task SendKeylogToModel(double[] features)
+        //Clean Shutdown
+        public void CleanShutdown()
         {
             try
             {
-                using (var client = new HttpClient())
+                audioSaveTimer?.Stop();
+                audioSaveTimer?.Dispose();
+
+                plagiarismCheckTimer?.Stop();
+                plagiarismCheckTimer?.Dispose();
+
+                paraphraseCheckTimer?.Stop();
+                paraphraseCheckTimer?.Dispose();
+
+                waveIn?.StopRecording();
+                waveIn?.Dispose();
+
+                
+                _pasteService?.Dispose();
+                _keystrokeService?.Dispose();
+
+                // Stop webcam
+                webcamRunning = false;
+                if (webcamThread != null && webcamThread.IsAlive)
                 {
-                    var json = new { features = features };
-                    var jsonString = JsonConvert.SerializeObject(json);
-                    var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
-
-                    var response = await client.PostAsync("http://127.0.0.1:5002/predict-keylog", content);
-                    var result = await response.Content.ReadAsStringAsync();
-
-                    Console.WriteLine("Keylog prediction: " + result);
-
-                    // Optional alert logic
-                    if (result.Contains("0.9")) // simple threshold check
-                    {
-                        MessageBox.Show("⚠️ Suspicious typing detected!", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
+                    webcamThread.Join(3000);
                 }
+
+                //_keyLogger?.Dispose();
+
+                trayIcon.Visible = false;
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error sending keylog to model: " + ex.Message);
+                Console.WriteLine("Error during shutdown: " + ex.Message);
             }
         }
-
-
-
-
-        private async Task SendFrameToVideoModel(string imagePath)
-        {
-            try
-            {
-                using (var client = new HttpClient())
-                using (var form = new MultipartFormDataContent())
-                using (var fileStream = File.OpenRead(imagePath))
-                {
-                    var fileContent = new StreamContent(fileStream);
-                    fileContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("image/jpeg");
-                    form.Add(fileContent, "file", Path.GetFileName(imagePath));
-
-                    var response = await client.PostAsync("http://127.0.0.1:5003/predict-video", form);
-                    var result = await response.Content.ReadAsStringAsync();
-
-                    Console.WriteLine("Video prediction: " + result);
-
-                    if (result.Contains("\"cheating\": true"))
-                    {
-                        MessageBox.Show("🚨 Cheating behavior detected!", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error sending frame to video model: " + ex.Message);
-            }
-        }
-
-
-
-        private async Task SendFrameToHumanModel(string imagePath)
-        {
-            try
-            {
-                using (var client = new HttpClient())
-                using (var form = new MultipartFormDataContent())
-                using (var fileStream = File.OpenRead(imagePath))
-                {
-                    var fileContent = new StreamContent(fileStream);
-                    fileContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("image/jpeg");
-                    form.Add(fileContent, "file", Path.GetFileName(imagePath));
-
-                    var response = await client.PostAsync("http://127.0.0.1:5005/predict-humans", form);
-                    var result = await response.Content.ReadAsStringAsync();
-
-                    Console.WriteLine("Human detection: " + result);
-
-                    if (result.Contains("\"cheating\": true"))
-                    {
-                        MessageBox.Show("⚠ Multiple humans detected! Possible cheating.", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error sending frame to human detection model: " + ex.Message);
-            }
-        }
-
-
-
-
-        private async Task SendAudioToModel(string audioPath)
-        {
-            try
-            {
-                using (var client = new HttpClient())
-                using (var form = new MultipartFormDataContent())
-                using (var fileStream = File.OpenRead(audioPath))
-                {
-                    var fileContent = new StreamContent(fileStream);
-                    fileContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("audio/wav");
-                    form.Add(fileContent, "file", Path.GetFileName(audioPath));
-
-                    var response = await client.PostAsync("http://127.0.0.1:5006/predict-audio", form);
-                    var result = await response.Content.ReadAsStringAsync();
-
-                    Console.WriteLine("Audio prediction: " + result);
-
-                    if (result.Contains("\"human_voice_detected\": true"))
-                    {
-                        MessageBox.Show("🗣️ Human voice detected during exam!", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error sending audio to model: " + ex.Message);
-            }
-        }
-
-
-
-
 
 
 
