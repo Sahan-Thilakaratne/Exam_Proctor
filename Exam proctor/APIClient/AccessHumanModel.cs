@@ -1,4 +1,6 @@
-﻿using Exam_proctor.Sessions;
+﻿using Exam_proctor.DTO;
+using Exam_proctor.Services;
+using Exam_proctor.Sessions;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -44,6 +46,16 @@ namespace Exam_proctor.APIClient
 
                     // Deserialize string into C# object
                     var parsedResult = JsonConvert.DeserializeObject<HumanModelResponse>(result);
+
+                    //realtime update
+                    ProctorUpdatesHub.Instance.Publish(new ProctorUpdate
+                    {
+                        Source = "multiHuman",
+                        ModelOutput = parsedResult.cheating ? "true" : "false",
+                        Confidence = parsedResult.humans_detected.ToString(), 
+                        Extra = Path.GetFileName(imagePath)
+                    });
+
 
                     if (parsedResult.cheating)
                     {

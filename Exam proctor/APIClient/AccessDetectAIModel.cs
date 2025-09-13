@@ -1,4 +1,6 @@
-﻿using Exam_proctor.Sessions;
+﻿using Exam_proctor.DTO;
+using Exam_proctor.Services;
+using Exam_proctor.Sessions;
 using Newtonsoft.Json;
 using OpenCvSharp;
 using System;
@@ -43,7 +45,21 @@ namespace Exam_proctor.APIClient
 
                     var parsed = JsonConvert.DeserializeObject<AIModelResponse>(result);
 
-                    
+                    //realtime update
+                    bool outPut = false;
+                    if (parsed.prediction == "ai")
+                    {
+                        outPut = true;
+                    }
+                    ProctorUpdatesHub.Instance.Publish(new ProctorUpdate
+                    {
+                        Source = "paste",
+                        ModelOutput = outPut ? "true" : "false",
+                        Confidence = null, 
+                        Extra = null
+                    });
+
+
                     var modelOutput = parsed?.prediction ?? "unknown";
                     double modelConfidence = parsed?.confidence ?? (modelOutput.Equals("ai", StringComparison.OrdinalIgnoreCase) ? 1.0 : 0.0);
 

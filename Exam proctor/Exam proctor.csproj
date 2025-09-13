@@ -39,6 +39,9 @@
     <Reference Include="dotenv.net, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\dotenv.net.4.0.0\lib\netstandard2.0\dotenv.net.dll</HintPath>
     </Reference>
+    <Reference Include="Guna.UI2, Version=2.0.4.7, Culture=neutral, PublicKeyToken=8b9d14aa5142e261, processorArchitecture=MSIL">
+      <HintPath>..\packages\Guna.UI2.WinForms.2.0.4.7\lib\net472\Guna.UI2.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Win32.Registry, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Win32.Registry.4.7.0\lib\net461\Microsoft.Win32.Registry.dll</HintPath>
     </Reference>
@@ -75,6 +78,8 @@
     </Reference>
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Memory, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Memory.4.6.3\lib\net462\System.Memory.dll</HintPath>
     </Reference>
@@ -91,6 +96,7 @@
     <Reference Include="System.Security.Principal.Windows, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Security.Principal.Windows.4.7.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -105,11 +111,13 @@
     <Compile Include="APIClient\AccessAudioModel.cs" />
     <Compile Include="APIClient\AccessCheatingObjectsModel.cs" />
     <Compile Include="APIClient\AccessDetectAIModel.cs" />
+    <Compile Include="APIClient\AccessDetectPlagiarsm.cs" />
     <Compile Include="APIClient\AccessFacePoseModel.cs" />
     <Compile Include="APIClient\AccessHumanModel.cs" />
     <Compile Include="APIClient\AccessKeyStrokeModel.cs" />
     <Compile Include="APIClient\Auth.cs" />
     <Compile Include="APIClient\SendCopyPasteText.cs" />
+    <Compile Include="DTO\ProctorUpdate.cs" />
     <Compile Include="ExamForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -121,6 +129,12 @@
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LiveMonitoringForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LiveMonitoringForm.Designer.cs">
+      <DependentUpon>LiveMonitoringForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Services\BackgroundAppMonitor.cs" />
     <Compile Include="Services\GlobalKeyboardHook.cs" />
@@ -135,6 +149,7 @@
     <Compile Include="Services\KeyStrokeCapture.cs" />
     <Compile Include="Services\KeystrokeDynamicsService.cs" />
     <Compile Include="Services\PasteDetectionService.cs" />
+    <Compile Include="Services\ProctorUpdatesHub.cs" />
     <Compile Include="Sessions\StudentSession.cs" />
     <EmbeddedResource Include="ExamForm.resx">
       <DependentUpon>ExamForm.cs</DependentUpon>

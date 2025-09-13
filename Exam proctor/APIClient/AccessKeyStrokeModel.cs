@@ -1,4 +1,6 @@
-﻿using Exam_proctor.Sessions;
+﻿using Exam_proctor.DTO;
+using Exam_proctor.Services;
+using Exam_proctor.Sessions;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -43,18 +45,33 @@ namespace Exam_proctor.APIClient
                     dynamic obj = JsonConvert.DeserializeObject(result);
                     double score = obj.prediction[0][0];
 
+                    //realtime update
+                    bool outPut = false;
+                    double scoreValue = double.Parse(score.ToString("F6"));
+                    if (scoreValue > 0.90)
+                    {
+                        outPut = true;
+                    }
+                    ProctorUpdatesHub.Instance.Publish(new ProctorUpdate
+                    {
+                        Source = "keystroke",
+                        ModelOutput = outPut ? "true" : "false",
+                        Confidence = score.ToString("F6"),
+                        Extra = null
+                    });
+
                     Console.WriteLine("Keylog prediction: " + result);
 
                     
 
-                    // Step 3: Send model result to backend
+                    
                     var backendPayload = new
                     {
                         //studentId = "688b4d8e932af0d839d77290",
                         studentId = StudentSession.Id,
                         inputType = "keystroke",
                         modelOutput = score.ToString("F6"),
-                        confidence = 1.0 // or extract from model output
+                        confidence = 1.0 
                     };
 
                     var backendPayloadString = JsonConvert.SerializeObject(backendPayload);
@@ -68,8 +85,8 @@ namespace Exam_proctor.APIClient
                     // Optional alert
                     if (score > 0.95)
                     {
-                        //MessageBox.Show("⚠️ Suspicious typing detected!", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        Console.WriteLine("⚠️ Suspicious typing detected!");
+                        //MessageBox.Show("Suspicious typing detected!", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        Console.WriteLine("Suspicious typing detected!");
                     }
                 }
             }

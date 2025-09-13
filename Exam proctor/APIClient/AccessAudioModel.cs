@@ -1,4 +1,6 @@
-﻿using Exam_proctor.Sessions;
+﻿using Exam_proctor.DTO;
+using Exam_proctor.Services;
+using Exam_proctor.Sessions;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -43,6 +45,15 @@ namespace Exam_proctor.APIClient
 
                     // Parse response
                     var parsedResult = JsonConvert.DeserializeObject<AudioModelResponse>(result);
+
+                    //realtime update
+                    ProctorUpdatesHub.Instance.Publish(new ProctorUpdate
+                    {
+                        Source = "audio",
+                        ModelOutput = parsedResult.human_voice_detected ? "true" : "false",
+                        Confidence = null, // or keep empty if not a score
+                        Extra = null
+                    });
 
                     if (parsedResult.human_voice_detected)
                     {

@@ -20,6 +20,7 @@ namespace Exam_proctor
 {
     public partial class Form1 : Form
     {
+        private Guna.UI2.WinForms.Guna2BorderlessForm borderless;
 
         //Form design
         private Label lblWelcome;
@@ -83,6 +84,23 @@ namespace Exam_proctor
 
          
             InitializeComponent();
+            
+            // Borderless + drag + shadow
+            borderless = new Guna.UI2.WinForms.Guna2BorderlessForm();
+            borderless.ContainerControl = this;
+            borderless.BorderRadius = 20;
+            borderless.TransparentWhileDrag = true;
+            borderless.ShadowColor = Color.Black;
+
+            this.BackColor = Color.FromArgb(245, 247, 250); // soft bg
+            this.Font = new Font("Segoe UI", 10f);
+
+            BuildLoginCard(); 
+
+
+
+
+
 
 
             trayMenu = new ContextMenu();
@@ -170,11 +188,11 @@ namespace Exam_proctor
 
 
 
-        private async void btnLogin1_Click(object sender, EventArgs e)
-        {
-            Auth auth = new Auth();
-            await auth.LoginAsync(email.Text, password.Text, this);
-        }
+        //private async void btnLogin1_Click(object sender, EventArgs e)
+        //{
+        //    Auth auth = new Auth();
+        //    await auth.LoginAsync(email.Text, password.Text, this);
+        //}
 
 
         private void label1_Click(object sender, EventArgs e)
@@ -382,6 +400,74 @@ namespace Exam_proctor
             {
                 Console.WriteLine("Error during shutdown: " + ex.Message);
             }
+        }
+
+
+
+        private void BuildLoginCard()
+        {
+            var card = new Guna.UI2.WinForms.Guna2Panel
+            {
+                Size = new System.Drawing.Size(520, 340),
+                FillColor = Color.White,
+                BorderRadius = 16,
+                ShadowDecoration = { Enabled = true },
+                Anchor = AnchorStyles.None
+            };
+            card.Location = new System.Drawing.Point(
+                (ClientSize.Width - card.Width) / 2,
+                (ClientSize.Height - card.Height) / 2);
+            this.Resize += (s, e) => card.Location = new System.Drawing.Point(
+                (ClientSize.Width - card.Width) / 2,
+                (ClientSize.Height - card.Height) / 2);
+            Controls.Add(card);
+
+            var title = new Label
+            {
+                Text = "Welcome to Exam Proctor",
+                Dock = DockStyle.Top,
+                Height = 80,
+                TextAlign = ContentAlignment.MiddleCenter,
+                Font = new Font("Segoe UI Semibold", 18f),
+                ForeColor = Color.FromArgb(24, 24, 27)
+            };
+            card.Controls.Add(title);
+
+            var txtEmail = new Guna.UI2.WinForms.Guna2TextBox
+            {
+                PlaceholderText = "Email",
+                BorderRadius = 12,
+                Size = new System.Drawing.Size(400, 44),
+                Location = new System.Drawing.Point(60, 112)
+            };
+            var txtPass = new Guna.UI2.WinForms.Guna2TextBox
+            {
+                PlaceholderText = "Password",
+                PasswordChar = '●',
+                UseSystemPasswordChar = true,
+                BorderRadius = 12,
+                Size = new System.Drawing.Size(400, 44),
+                Location = new System.Drawing.Point(60, 180)
+            };
+            var btnLogin = new Guna.UI2.WinForms.Guna2Button
+            {
+                Text = "Login",
+                BorderRadius = 12,
+                Size = new System.Drawing.Size(400, 46),
+                Location = new System.Drawing.Point(60, 248),
+                FillColor = Color.FromArgb(59, 130, 246)
+            };
+
+            btnLogin.Click += async (s, e) =>
+            {
+                var auth = new Auth();
+                await auth.LoginAsync(txtEmail.Text, txtPass.Text, this);
+            };
+
+
+            card.Controls.Add(txtEmail);
+            card.Controls.Add(txtPass);
+            card.Controls.Add(btnLogin);
         }
 
 
