@@ -72,6 +72,31 @@ namespace Exam_proctor.APIClient
                     var backendResponse = await client.PostAsync(baseUrlEndPoint, json);
                     var backendResult = await backendResponse.Content.ReadAsStringAsync();
 
+                    if (parsedResult.cheating)
+                    {
+                        var obj = JsonConvert.DeserializeObject<dynamic>(backendResult);
+                        string sid = obj?.sessionId;
+
+                        using (var upload = new MultipartFormDataContent())
+                        using (var fs = File.OpenRead(imagePath))
+                        {
+                            
+                            upload.Add(new StringContent(StudentSession.Id), "studentId");
+                            upload.Add(new StringContent(sid), "sessionId"); // make sure you track this
+                            upload.Add(new StringContent(parsedResult.pose ?? "unknown"), "pose");
+                            upload.Add(new StringContent("true"), "cheating");
+
+                            var img = new StreamContent(fs);
+                            img.Headers.ContentType = new MediaTypeHeaderValue("image/jpeg");
+                            upload.Add(img, "file", Path.GetFileName(imagePath));
+
+                            var upUrl = $"{baseUrl.TrimEnd('/')}/face/upload";
+                            var upRes = await client.PostAsync(upUrl, upload);
+                            var upTxt = await upRes.Content.ReadAsStringAsync();
+                            Console.WriteLine("FacePose image uploaded: " + upTxt);
+                        }
+                    }
+
                     Console.WriteLine("Sent to backend: " + backendResult);
                 }
             }

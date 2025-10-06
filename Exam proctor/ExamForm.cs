@@ -41,12 +41,12 @@ namespace Exam_proctor
             // Create & show monitoring form once
             if (_monitorForm == null || _monitorForm.IsDisposed)
             {
-                _monitorForm = new LiveMonitoringForm
-                {
-                    TopMost = true // optional, you already set this inside the form
-                };
-                _monitorForm.Show();
-                _monitorForm.BringToFront();
+                //_monitorForm = new LiveMonitoringForm
+                //{
+                //    TopMost = true 
+                //};
+                //_monitorForm.Show();
+                //_monitorForm.BringToFront();
             }
 
             // Remove legacy controls created by the Designer

@@ -25,10 +25,10 @@ namespace Exam_proctor.Services
         private readonly object _textLock = new object();
         private readonly StringBuilder _currentWord = new StringBuilder();
         private readonly List<string> _words = new List<string>();
-        private const int WORD_BATCH_SIZE = 50;
+        private const int WORD_BATCH_SIZE = 40;
         private bool _shiftDown = false;
 
-        // 🔹 NEW: AI client for sending 30-word batches
+        // 🔹 NEW: AI client for sending 40-word batches
         private readonly AccessDetectPlagiarsm _aiClient = new AccessDetectPlagiarsm();
 
 
@@ -167,7 +167,7 @@ namespace Exam_proctor.Services
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine("Error sending 30-word batch to AI model: " + ex.Message);
+                    Console.WriteLine("Error sending 40-word batch to AI model: " + ex.Message);
                 }
             }
         }
