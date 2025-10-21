@@ -52,7 +52,7 @@ namespace Exam_proctor.APIClient
                     {
                         Source = "facePose",
                         ModelOutput = parsedResult.cheating ? "true" : "false",
-                        Confidence = parsedResult.pose.ToString(), // or keep empty if not a score
+                        Confidence = parsedResult.pose.ToString(), 
                         Extra = Path.GetFileName(imagePath)
                     });
 
@@ -82,7 +82,7 @@ namespace Exam_proctor.APIClient
                         {
                             
                             upload.Add(new StringContent(StudentSession.Id), "studentId");
-                            upload.Add(new StringContent(sid), "sessionId"); // make sure you track this
+                            upload.Add(new StringContent(sid), "sessionId"); 
                             upload.Add(new StringContent(parsedResult.pose ?? "unknown"), "pose");
                             upload.Add(new StringContent("true"), "cheating");
 

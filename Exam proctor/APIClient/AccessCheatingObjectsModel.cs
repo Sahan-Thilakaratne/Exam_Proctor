@@ -28,7 +28,8 @@ namespace Exam_proctor.APIClient
         public class CheatingObjectModelResponse
         {
             public bool cheating { get; set; }
-            public List<Detection> detection{ get; set; } 
+            [JsonProperty("detections")]           // <-- map API key "detections" -> detection
+            public List<Detection> detection { get; set; }
         }
 
         public async Task SendFrameToVideoModel(string imagePath)
@@ -60,7 +61,7 @@ namespace Exam_proctor.APIClient
                     {
                         Source = "cheatingObjects",
                         ModelOutput = parsedResult.cheating ? "true" : "false",
-                        Confidence = null, // or keep empty if not a score
+                        Confidence = null, 
                         Extra = Path.GetFileName(imagePath)
                     });
 
@@ -77,7 +78,9 @@ namespace Exam_proctor.APIClient
                         inputType = "cheatingObjects",
                         //inputDataId = Path.GetFileName(imagePath),
                         modelOutput = parsedResult.cheating.ToString(),
-                        confidence = ""
+                        confidence = parsedResult?.detection != null
+        ? string.Join(" | ", parsedResult.detection.Select(d => $"{d.label}:{d.confidence}"))
+        : ""
                     };
 
                     var json = new StringContent(JsonConvert.SerializeObject(backendPayload), Encoding.UTF8, "application/json");

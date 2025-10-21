@@ -72,8 +72,8 @@ namespace Exam_proctor.APIClient
                             inputType = "multiHUman",
                                 //inputDataId = Path.GetFileName(imagePath),
                                 modelOutput = parsedResult.cheating.ToString(),
-                                confidence = ""
-                            };
+                                confidence = parsedResult.humans_detected.ToString(),
+                        };
 
                     var json = new StringContent(JsonConvert.SerializeObject(backendPayload), Encoding.UTF8, "application/json");
                     var backendResponse = await client.PostAsync(baseUrlEndPoint, json);
