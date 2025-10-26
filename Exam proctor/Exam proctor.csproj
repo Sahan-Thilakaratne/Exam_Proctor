@@ -150,6 +150,7 @@
     <Compile Include="Services\KeystrokeDynamicsService.cs" />
     <Compile Include="Services\PasteDetectionService.cs" />
     <Compile Include="Services\ProctorUpdatesHub.cs" />
+    <Compile Include="Services\ScreenCapture.cs" />
     <Compile Include="Sessions\StudentSession.cs" />
     <EmbeddedResource Include="ExamForm.resx">
       <DependentUpon>ExamForm.cs</DependentUpon>

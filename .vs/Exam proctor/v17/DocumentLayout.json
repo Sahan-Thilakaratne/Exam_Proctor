@@ -3,28 +3,60 @@
   "WorkspaceRootPath": "D:\\Sysconex\\Lockdown\\Exam Proctor - New files\\Exam Proctor\\Exam_Proctor\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E5001E11-5301-4101-BB58-23984C5385A7}|Exam proctor\\Exam proctor.csproj|d:\\sysconex\\lockdown\\exam proctor - new files\\exam proctor\\exam_proctor\\exam proctor\\apiclient\\accesshumanmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E5001E11-5301-4101-BB58-23984C5385A7}|Exam proctor\\Exam proctor.csproj|solutionrelative:exam proctor\\apiclient\\accesshumanmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E5001E11-5301-4101-BB58-23984C5385A7}|Exam proctor\\Exam proctor.csproj|D:\\Sysconex\\Lockdown\\Exam Proctor - New files\\Exam Proctor\\Exam_Proctor\\exam proctor\\apiclient\\accessdetectplagiarsm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E5001E11-5301-4101-BB58-23984C5385A7}|Exam proctor\\Exam proctor.csproj|solutionrelative:exam proctor\\apiclient\\accessdetectplagiarsm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E5001E11-5301-4101-BB58-23984C5385A7}|Exam proctor\\Exam proctor.csproj|d:\\sysconex\\lockdown\\exam proctor - new files\\exam proctor\\exam_proctor\\exam proctor\\apiclient\\accessdetectaimodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E5001E11-5301-4101-BB58-23984C5385A7}|Exam proctor\\Exam proctor.csproj|solutionrelative:exam proctor\\apiclient\\accessdetectaimodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E5001E11-5301-4101-BB58-23984C5385A7}|Exam proctor\\Exam proctor.csproj|d:\\sysconex\\lockdown\\exam proctor - new files\\exam proctor\\exam_proctor\\exam proctor\\apiclient\\accessfaceposemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E5001E11-5301-4101-BB58-23984C5385A7}|Exam proctor\\Exam proctor.csproj|solutionrelative:exam proctor\\apiclient\\accessfaceposemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E5001E11-5301-4101-BB58-23984C5385A7}|Exam proctor\\Exam proctor.csproj|D:\\Sysconex\\Lockdown\\Exam Proctor - New files\\Exam Proctor\\Exam_Proctor\\exam proctor\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
       "RelativeMoniker": "D:0:0:{E5001E11-5301-4101-BB58-23984C5385A7}|Exam proctor\\Exam proctor.csproj|solutionrelative:exam proctor\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E5001E11-5301-4101-BB58-23984C5385A7}|Exam proctor\\Exam proctor.csproj|D:\\Sysconex\\Lockdown\\Exam Proctor - New files\\Exam Proctor\\Exam_Proctor\\exam proctor\\apiclient\\accesscheatingobjectsmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E5001E11-5301-4101-BB58-23984C5385A7}|Exam proctor\\Exam proctor.csproj|solutionrelative:exam proctor\\apiclient\\accesscheatingobjectsmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E5001E11-5301-4101-BB58-23984C5385A7}|Exam proctor\\Exam proctor.csproj|D:\\Sysconex\\Lockdown\\Exam Proctor - New files\\Exam Proctor\\Exam_Proctor\\exam proctor\\services\\screencapture.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E5001E11-5301-4101-BB58-23984C5385A7}|Exam proctor\\Exam proctor.csproj|solutionrelative:exam proctor\\services\\screencapture.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E5001E11-5301-4101-BB58-23984C5385A7}|Exam proctor\\Exam proctor.csproj|D:\\Sysconex\\Lockdown\\Exam Proctor - New files\\Exam Proctor\\Exam_Proctor\\exam proctor\\apiclient\\accessfaceposemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E5001E11-5301-4101-BB58-23984C5385A7}|Exam proctor\\Exam proctor.csproj|solutionrelative:exam proctor\\apiclient\\accessfaceposemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E5001E11-5301-4101-BB58-23984C5385A7}|Exam proctor\\Exam proctor.csproj|D:\\Sysconex\\Lockdown\\Exam Proctor - New files\\Exam Proctor\\Exam_Proctor\\exam proctor\\services\\pastedetectionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E5001E11-5301-4101-BB58-23984C5385A7}|Exam proctor\\Exam proctor.csproj|solutionrelative:exam proctor\\services\\pastedetectionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E5001E11-5301-4101-BB58-23984C5385A7}|Exam proctor\\Exam proctor.csproj|D:\\Sysconex\\Lockdown\\Exam Proctor - New files\\Exam Proctor\\Exam_Proctor\\exam proctor\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E5001E11-5301-4101-BB58-23984C5385A7}|Exam proctor\\Exam proctor.csproj|solutionrelative:exam proctor\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E5001E11-5301-4101-BB58-23984C5385A7}|Exam proctor\\Exam proctor.csproj|D:\\Sysconex\\Lockdown\\Exam Proctor - New files\\Exam Proctor\\Exam_Proctor\\exam proctor\\apiclient\\accessdetectplagiarsm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E5001E11-5301-4101-BB58-23984C5385A7}|Exam proctor\\Exam proctor.csproj|solutionrelative:exam proctor\\apiclient\\accessdetectplagiarsm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E5001E11-5301-4101-BB58-23984C5385A7}|Exam proctor\\Exam proctor.csproj|D:\\Sysconex\\Lockdown\\Exam Proctor - New files\\Exam Proctor\\Exam_Proctor\\exam proctor\\services\\globalkeyboardhook.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E5001E11-5301-4101-BB58-23984C5385A7}|Exam proctor\\Exam proctor.csproj|solutionrelative:exam proctor\\services\\globalkeyboardhook.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E5001E11-5301-4101-BB58-23984C5385A7}|Exam proctor\\Exam proctor.csproj|D:\\Sysconex\\Lockdown\\Exam Proctor - New files\\Exam Proctor\\Exam_Proctor\\exam proctor\\services\\keystrokedynamicsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E5001E11-5301-4101-BB58-23984C5385A7}|Exam proctor\\Exam proctor.csproj|solutionrelative:exam proctor\\services\\keystrokedynamicsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E5001E11-5301-4101-BB58-23984C5385A7}|Exam proctor\\Exam proctor.csproj|D:\\Sysconex\\Lockdown\\Exam Proctor - New files\\Exam Proctor\\Exam_Proctor\\exam proctor\\apiclient\\sendcopypastetext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E5001E11-5301-4101-BB58-23984C5385A7}|Exam proctor\\Exam proctor.csproj|solutionrelative:exam proctor\\apiclient\\sendcopypastetext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E5001E11-5301-4101-BB58-23984C5385A7}|Exam proctor\\Exam proctor.csproj|D:\\Sysconex\\Lockdown\\Exam Proctor - New files\\Exam Proctor\\Exam_Proctor\\exam proctor\\services\\keystrokecapture.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E5001E11-5301-4101-BB58-23984C5385A7}|Exam proctor\\Exam proctor.csproj|solutionrelative:exam proctor\\services\\keystrokecapture.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E5001E11-5301-4101-BB58-23984C5385A7}|Exam proctor\\Exam proctor.csproj|D:\\Sysconex\\Lockdown\\Exam Proctor - New files\\Exam Proctor\\Exam_Proctor\\exam proctor\\apiclient\\accesskeystrokemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E5001E11-5301-4101-BB58-23984C5385A7}|Exam proctor\\Exam proctor.csproj|solutionrelative:exam proctor\\apiclient\\accesskeystrokemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E5001E11-5301-4101-BB58-23984C5385A7}|Exam proctor\\Exam proctor.csproj|D:\\Sysconex\\Lockdown\\Exam Proctor - New files\\Exam Proctor\\Exam_Proctor\\exam proctor\\apiclient\\accesshumanmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E5001E11-5301-4101-BB58-23984C5385A7}|Exam proctor\\Exam proctor.csproj|solutionrelative:exam proctor\\apiclient\\accesshumanmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E5001E11-5301-4101-BB58-23984C5385A7}|Exam proctor\\Exam proctor.csproj|D:\\Sysconex\\Lockdown\\Exam Proctor - New files\\Exam Proctor\\Exam_Proctor\\exam proctor\\apiclient\\accesscheatingobjectsmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E5001E11-5301-4101-BB58-23984C5385A7}|Exam proctor\\Exam proctor.csproj|solutionrelative:exam proctor\\apiclient\\accesscheatingobjectsmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E5001E11-5301-4101-BB58-23984C5385A7}|Exam proctor\\Exam proctor.csproj|D:\\Sysconex\\Lockdown\\Exam Proctor - New files\\Exam Proctor\\Exam_Proctor\\exam proctor\\apiclient\\auth.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -37,26 +69,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{E5001E11-5301-4101-BB58-23984C5385A7}|Exam proctor\\Exam proctor.csproj|D:\\Sysconex\\Lockdown\\Exam Proctor - New files\\Exam Proctor\\Exam_Proctor\\exam proctor\\dto\\proctorupdate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E5001E11-5301-4101-BB58-23984C5385A7}|Exam proctor\\Exam proctor.csproj|solutionrelative:exam proctor\\dto\\proctorupdate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E5001E11-5301-4101-BB58-23984C5385A7}|Exam proctor\\Exam proctor.csproj|D:\\Sysconex\\Lockdown\\Exam Proctor - New files\\Exam Proctor\\Exam_Proctor\\exam proctor\\services\\keystrokedynamicsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E5001E11-5301-4101-BB58-23984C5385A7}|Exam proctor\\Exam proctor.csproj|solutionrelative:exam proctor\\services\\keystrokedynamicsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E5001E11-5301-4101-BB58-23984C5385A7}|Exam proctor\\Exam proctor.csproj|D:\\Sysconex\\Lockdown\\Exam Proctor - New files\\Exam Proctor\\Exam_Proctor\\exam proctor\\apiclient\\accessdetectaimodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E5001E11-5301-4101-BB58-23984C5385A7}|Exam proctor\\Exam proctor.csproj|solutionrelative:exam proctor\\apiclient\\accessdetectaimodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E5001E11-5301-4101-BB58-23984C5385A7}|Exam proctor\\Exam proctor.csproj|D:\\Sysconex\\Lockdown\\Exam Proctor - New files\\Exam Proctor\\Exam_Proctor\\exam proctor\\services\\keystrokecapture.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E5001E11-5301-4101-BB58-23984C5385A7}|Exam proctor\\Exam proctor.csproj|solutionrelative:exam proctor\\services\\keystrokecapture.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E5001E11-5301-4101-BB58-23984C5385A7}|Exam proctor\\Exam proctor.csproj|D:\\Sysconex\\Lockdown\\Exam Proctor - New files\\Exam Proctor\\Exam_Proctor\\exam proctor\\services\\globalkeyboardhook.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E5001E11-5301-4101-BB58-23984C5385A7}|Exam proctor\\Exam proctor.csproj|solutionrelative:exam proctor\\services\\globalkeyboardhook.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E5001E11-5301-4101-BB58-23984C5385A7}|Exam proctor\\Exam proctor.csproj|D:\\Sysconex\\Lockdown\\Exam Proctor - New files\\Exam Proctor\\Exam_Proctor\\exam proctor\\apiclient\\sendcopypastetext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E5001E11-5301-4101-BB58-23984C5385A7}|Exam proctor\\Exam proctor.csproj|solutionrelative:exam proctor\\apiclient\\sendcopypastetext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E5001E11-5301-4101-BB58-23984C5385A7}|Exam proctor\\Exam proctor.csproj|D:\\Sysconex\\Lockdown\\Exam Proctor - New files\\Exam Proctor\\Exam_Proctor\\exam proctor\\apiclient\\accessaudiomodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -73,12 +85,48 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 828,
-          "SelectedChildIndex": 0,
+          "DockedWidth": 1157,
+          "SelectedChildIndex": 11,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 5,
+              "Title": "PasteDetectionService.cs",
+              "DocumentMoniker": "D:\\Sysconex\\Lockdown\\Exam Proctor - New files\\Exam Proctor\\Exam_Proctor\\Exam proctor\\Services\\PasteDetectionService.cs",
+              "RelativeDocumentMoniker": "Exam proctor\\Services\\PasteDetectionService.cs",
+              "ToolTip": "D:\\Sysconex\\Lockdown\\Exam Proctor - New files\\Exam Proctor\\Exam_Proctor\\Exam proctor\\Services\\PasteDetectionService.cs",
+              "RelativeToolTip": "Exam proctor\\Services\\PasteDetectionService.cs",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAowEUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-25T07:26:45.53Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ScreenCapture.cs",
+              "DocumentMoniker": "D:\\Sysconex\\Lockdown\\Exam Proctor - New files\\Exam Proctor\\Exam_Proctor\\Exam proctor\\Services\\ScreenCapture.cs",
+              "RelativeDocumentMoniker": "Exam proctor\\Services\\ScreenCapture.cs",
+              "ToolTip": "D:\\Sysconex\\Lockdown\\Exam Proctor - New files\\Exam Proctor\\Exam_Proctor\\Exam proctor\\Services\\ScreenCapture.cs",
+              "RelativeToolTip": "Exam proctor\\Services\\ScreenCapture.cs",
+              "ViewState": "AgIAADEAAAAAAAAAAAAgwFYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-25T18:06:37.738Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "AccessKeyStrokeModel.cs",
+              "DocumentMoniker": "D:\\Sysconex\\Lockdown\\Exam Proctor - New files\\Exam Proctor\\Exam_Proctor\\Exam proctor\\APIClient\\AccessKeyStrokeModel.cs",
+              "RelativeDocumentMoniker": "Exam proctor\\APIClient\\AccessKeyStrokeModel.cs",
+              "ToolTip": "D:\\Sysconex\\Lockdown\\Exam Proctor - New files\\Exam Proctor\\Exam_Proctor\\Exam proctor\\APIClient\\AccessKeyStrokeModel.cs",
+              "RelativeToolTip": "Exam proctor\\APIClient\\AccessKeyStrokeModel.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAAAowF4AAABQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-25T07:25:37.325Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
               "Title": "AccessHumanModel.cs",
               "DocumentMoniker": "D:\\Sysconex\\Lockdown\\Exam Proctor - New files\\Exam Proctor\\Exam_Proctor\\Exam proctor\\APIClient\\AccessHumanModel.cs",
               "RelativeDocumentMoniker": "Exam proctor\\APIClient\\AccessHumanModel.cs",
@@ -86,12 +134,11 @@
               "RelativeToolTip": "Exam proctor\\APIClient\\AccessHumanModel.cs",
               "ViewState": "AgIAADMAAAAAAAAAAAAqwGAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-19T16:03:22.004Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-19T16:03:22.004Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 13,
               "Title": "AccessCheatingObjectsModel.cs",
               "DocumentMoniker": "D:\\Sysconex\\Lockdown\\Exam Proctor - New files\\Exam Proctor\\Exam_Proctor\\Exam proctor\\APIClient\\AccessCheatingObjectsModel.cs",
               "RelativeDocumentMoniker": "Exam proctor\\APIClient\\AccessCheatingObjectsModel.cs",
@@ -103,19 +150,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "AccessFacePoseModel.cs",
-              "DocumentMoniker": "D:\\Sysconex\\Lockdown\\Exam Proctor - New files\\Exam Proctor\\Exam_Proctor\\Exam proctor\\APIClient\\AccessFacePoseModel.cs",
-              "RelativeDocumentMoniker": "Exam proctor\\APIClient\\AccessFacePoseModel.cs",
-              "ToolTip": "D:\\Sysconex\\Lockdown\\Exam Proctor - New files\\Exam Proctor\\Exam_Proctor\\Exam proctor\\APIClient\\AccessFacePoseModel.cs",
-              "RelativeToolTip": "Exam proctor\\APIClient\\AccessFacePoseModel.cs",
-              "ViewState": "AgIAADUAAAAAAAAAAAAuwDYAAABDAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-04T12:10:45.077Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 15,
               "Title": "ExamForm.cs [Design]",
               "DocumentMoniker": "D:\\Sysconex\\Lockdown\\Exam Proctor - New files\\Exam Proctor\\Exam_Proctor\\Exam proctor\\ExamForm.cs",
               "RelativeDocumentMoniker": "Exam proctor\\ExamForm.cs",
@@ -126,7 +161,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "App.config",
               "DocumentMoniker": "D:\\Sysconex\\Lockdown\\Exam Proctor - New files\\Exam Proctor\\Exam_Proctor\\Exam proctor\\App.config",
               "RelativeDocumentMoniker": "Exam proctor\\App.config",
@@ -134,12 +169,11 @@
               "RelativeToolTip": "Exam proctor\\App.config",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
-              "WhenOpened": "2025-09-14T15:11:15.418Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-14T15:11:15.418Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 16,
               "Title": "ProctorUpdate.cs",
               "DocumentMoniker": "D:\\Sysconex\\Lockdown\\Exam Proctor - New files\\Exam Proctor\\Exam_Proctor\\Exam proctor\\DTO\\ProctorUpdate.cs",
               "RelativeDocumentMoniker": "Exam proctor\\DTO\\ProctorUpdate.cs",
@@ -151,79 +185,81 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 10,
               "Title": "KeyStrokeCapture.cs",
               "DocumentMoniker": "D:\\Sysconex\\Lockdown\\Exam Proctor - New files\\Exam Proctor\\Exam_Proctor\\Exam proctor\\Services\\KeyStrokeCapture.cs",
               "RelativeDocumentMoniker": "Exam proctor\\Services\\KeyStrokeCapture.cs",
               "ToolTip": "D:\\Sysconex\\Lockdown\\Exam Proctor - New files\\Exam Proctor\\Exam_Proctor\\Exam proctor\\Services\\KeyStrokeCapture.cs",
               "RelativeToolTip": "Exam proctor\\Services\\KeyStrokeCapture.cs",
-              "ViewState": "AgIAAEcAAAAAAAAAAADwv1wAAAAoAAAAAAAAAA==",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAQwHYAAABLAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-14T14:48:34.942Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 1,
               "Title": "AccessDetectAIModel.cs",
               "DocumentMoniker": "D:\\Sysconex\\Lockdown\\Exam Proctor - New files\\Exam Proctor\\Exam_Proctor\\Exam proctor\\APIClient\\AccessDetectAIModel.cs",
               "RelativeDocumentMoniker": "Exam proctor\\APIClient\\AccessDetectAIModel.cs",
               "ToolTip": "D:\\Sysconex\\Lockdown\\Exam Proctor - New files\\Exam Proctor\\Exam_Proctor\\Exam proctor\\APIClient\\AccessDetectAIModel.cs",
               "RelativeToolTip": "Exam proctor\\APIClient\\AccessDetectAIModel.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAA1wDsAAAAXAAAAAAAAAA==",
+              "ViewState": "AgIAACMAAAAAAAAAAAAYwKkAAABPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-14T14:46:20.735Z"
+              "WhenOpened": "2025-09-14T14:46:20.735Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 9,
               "Title": "SendCopyPasteText.cs",
               "DocumentMoniker": "D:\\Sysconex\\Lockdown\\Exam Proctor - New files\\Exam Proctor\\Exam_Proctor\\Exam proctor\\APIClient\\SendCopyPasteText.cs",
               "RelativeDocumentMoniker": "Exam proctor\\APIClient\\SendCopyPasteText.cs",
               "ToolTip": "D:\\Sysconex\\Lockdown\\Exam Proctor - New files\\Exam Proctor\\Exam_Proctor\\Exam proctor\\APIClient\\SendCopyPasteText.cs",
               "RelativeToolTip": "Exam proctor\\APIClient\\SendCopyPasteText.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-14T14:46:07.684Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 0,
               "Title": "AccessDetectPlagiarsm.cs",
               "DocumentMoniker": "D:\\Sysconex\\Lockdown\\Exam Proctor - New files\\Exam Proctor\\Exam_Proctor\\Exam proctor\\APIClient\\AccessDetectPlagiarsm.cs",
               "RelativeDocumentMoniker": "Exam proctor\\APIClient\\AccessDetectPlagiarsm.cs",
               "ToolTip": "D:\\Sysconex\\Lockdown\\Exam Proctor - New files\\Exam Proctor\\Exam_Proctor\\Exam proctor\\APIClient\\AccessDetectPlagiarsm.cs",
               "RelativeToolTip": "Exam proctor\\APIClient\\AccessDetectPlagiarsm.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAqwA8AAAARAAAAAAAAAA==",
+              "ViewState": "AgIAADsAAAAAAAAAAAAkwEAAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-14T14:44:32.707Z"
+              "WhenOpened": "2025-09-14T14:44:32.707Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 7,
               "Title": "GlobalKeyboardHook.cs",
               "DocumentMoniker": "D:\\Sysconex\\Lockdown\\Exam Proctor - New files\\Exam Proctor\\Exam_Proctor\\Exam proctor\\Services\\GlobalKeyboardHook.cs",
               "RelativeDocumentMoniker": "Exam proctor\\Services\\GlobalKeyboardHook.cs",
               "ToolTip": "D:\\Sysconex\\Lockdown\\Exam Proctor - New files\\Exam Proctor\\Exam_Proctor\\Exam proctor\\Services\\GlobalKeyboardHook.cs",
               "RelativeToolTip": "Exam proctor\\Services\\GlobalKeyboardHook.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAQAAAAAAAAAA==",
+              "ViewState": "AgIAABwAAAAAAAAAAAAiwDsAAABHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-14T14:36:28.692Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 8,
               "Title": "KeystrokeDynamicsService.cs",
               "DocumentMoniker": "D:\\Sysconex\\Lockdown\\Exam Proctor - New files\\Exam Proctor\\Exam_Proctor\\Exam proctor\\Services\\KeystrokeDynamicsService.cs",
               "RelativeDocumentMoniker": "Exam proctor\\Services\\KeystrokeDynamicsService.cs",
               "ToolTip": "D:\\Sysconex\\Lockdown\\Exam Proctor - New files\\Exam Proctor\\Exam_Proctor\\Exam proctor\\Services\\KeystrokeDynamicsService.cs",
               "RelativeToolTip": "Exam proctor\\Services\\KeystrokeDynamicsService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAABUAAAAAAAAAA==",
+              "ViewState": "AgIAACoAAAAAAAAAAAAQwKkAAABcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-14T14:35:32.869Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 17,
               "Title": "AccessAudioModel.cs",
               "DocumentMoniker": "D:\\Sysconex\\Lockdown\\Exam Proctor - New files\\Exam Proctor\\Exam_Proctor\\Exam proctor\\APIClient\\AccessAudioModel.cs",
               "RelativeDocumentMoniker": "Exam proctor\\APIClient\\AccessAudioModel.cs",
@@ -235,7 +271,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 14,
               "Title": "Auth.cs",
               "DocumentMoniker": "D:\\Sysconex\\Lockdown\\Exam Proctor - New files\\Exam Proctor\\Exam_Proctor\\Exam proctor\\APIClient\\Auth.cs",
               "RelativeDocumentMoniker": "Exam proctor\\APIClient\\Auth.cs",
@@ -247,7 +283,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 18,
               "Title": "Form1.cs [Design]",
               "DocumentMoniker": "D:\\Sysconex\\Lockdown\\Exam Proctor - New files\\Exam Proctor\\Exam_Proctor\\Exam proctor\\Form1.cs",
               "RelativeDocumentMoniker": "Exam proctor\\Form1.cs",
@@ -258,15 +294,34 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "Form1.cs",
               "DocumentMoniker": "D:\\Sysconex\\Lockdown\\Exam Proctor - New files\\Exam Proctor\\Exam_Proctor\\Exam proctor\\Form1.cs",
               "RelativeDocumentMoniker": "Exam proctor\\Form1.cs",
               "ToolTip": "D:\\Sysconex\\Lockdown\\Exam Proctor - New files\\Exam Proctor\\Exam_Proctor\\Exam proctor\\Form1.cs",
               "RelativeToolTip": "Exam proctor\\Form1.cs",
-              "ViewState": "AgIAANcAAAAAAAAAAAAAwOEAAAA1AAAAAAAAAA==",
+              "ViewState": "AgIAAIQAAAAAAAAAAAAowJ8AAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-14T14:28:30.968Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 499,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AccessFacePoseModel.cs",
+              "DocumentMoniker": "D:\\Sysconex\\Lockdown\\Exam Proctor - New files\\Exam Proctor\\Exam_Proctor\\Exam proctor\\APIClient\\AccessFacePoseModel.cs",
+              "RelativeDocumentMoniker": "Exam proctor\\APIClient\\AccessFacePoseModel.cs",
+              "ToolTip": "D:\\Sysconex\\Lockdown\\Exam Proctor - New files\\Exam Proctor\\Exam_Proctor\\Exam proctor\\APIClient\\AccessFacePoseModel.cs",
+              "RelativeToolTip": "Exam proctor\\APIClient\\AccessFacePoseModel.cs",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAkwF0AAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-04T12:10:45.077Z",
+              "EditorCaption": ""
             }
           ]
         }

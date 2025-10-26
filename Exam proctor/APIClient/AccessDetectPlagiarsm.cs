@@ -62,7 +62,7 @@ namespace Exam_proctor.APIClient
                     double modelConfidence = parsed?.confidence ?? (modelOutput.Equals("ai", StringComparison.OrdinalIgnoreCase) ? 1.0 : 0.0);
 
                     Console.WriteLine("Typed text prediction: " + result);
-                    MessageBox.Show("Typed text prediction: " + result);
+                    //MessageBox.Show("Typed text prediction: " + result);
 
 
                     var backendPayload = new
